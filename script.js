@@ -14,10 +14,25 @@ function getComputerChoice(min, max) {
   } else {
     computerChoice = "Tesoura";
   }
-  return computerChoice;
+
+  console.log(number, computerChoice);
 }
 
+getComputerChoice(1, 3);
+
 function getHumanChoice() {
-  let humanChoice = prompt("Your choice: ");
-  return humanChoice;
+  let humanChoice = prompt("Your choice: ").toLowerCase();
+  let choiceToNumber = 0;
+
+  if (humanChoice == "pedra") {
+    choiceToNumber = 1;
+  } else if (humanChoice == "papel") {
+    choiceToNumber = 2;
+  } else {
+    choiceToNumber = 3;
+  }
+
+  console.log(choiceToNumber);
 }
+
+getHumanChoice();
