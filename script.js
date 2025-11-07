@@ -15,10 +15,8 @@ function getComputerChoice(min, max) {
     computerChoice = "Tesoura";
   }
 
-  console.log(number, computerChoice);
+  return computerChoice;
 }
-
-getComputerChoice(1, 3);
 
 function getHumanChoice() {
   let humanChoice = prompt("Your choice: ").toLowerCase();
@@ -32,7 +30,27 @@ function getHumanChoice() {
     choiceToNumber = 3;
   }
 
-  console.log(choiceToNumber);
+  return humanChoice;
 }
 
-getHumanChoice();
+let humanScore,
+  computerScore = 0;
+
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice(1, 3);
+
+function playRound(humanChoice, computerChoice) {
+  if (humanSelection > computerSelection) {
+    humanScore += 1;
+    console.log(
+      `Você venceu! ${humanChoice} vence ${computerChoice}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
+    );
+  } else {
+    computerScore += 1;
+    console.log(
+      `A máquina venceu! ${computerChoice} vence ${humanChoice}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
+    );
+  }
+}
+
+playRound();
