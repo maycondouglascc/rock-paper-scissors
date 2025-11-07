@@ -16,3 +16,8 @@ function getComputerChoice(min, max) {
   }
   return computerChoice;
 }
+
+function getHumanChoice() {
+  let humanChoice = prompt("Your choice: ");
+  return humanChoice;
+}
