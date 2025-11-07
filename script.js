@@ -33,24 +33,36 @@ function getHumanChoice() {
   return [choiceToNumber, humanChoice];
 }
 
-let humanScore = 0;
-let computerScore = 0;
+function playGame(n) {
+  let humanScore = 0;
+  let computerScore = 0;
+  let humanSelection = getHumanChoice();
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice(1, 3);
-
-function playRound(humanChoice, computerChoice) {
-  if (humanSelection[0] > computerSelection[0]) {
-    humanScore += 1;
-    console.log(
-      `Você venceu! ${humanSelection[1]} vence ${computerSelection[1]}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
-    );
-  } else {
-    computerScore += 1;
-    console.log(
-      `A máquina venceu! ${computerSelection[1]} vence ${humanSelection[1]}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
-    );
+  for (let i = 1; i <= n; i++) {
+    playRound();
   }
+
+  function playRound(humanChoice, computerChoice) {
+    let computerSelection = getComputerChoice(1, 3);
+    if (humanSelection[0] > computerSelection[0]) {
+      humanScore += 1;
+      console.log(
+        `Você venceu! ${humanSelection[1]} vence ${computerSelection[1]}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
+      );
+    } else if (humanSelection[0] == computerSelection[0]) {
+      computerScore += 1;
+      humanScore += 1;
+      console.log(
+        `Empate! Ambos escolheram ${computerSelection[1]}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
+      );
+    } else {
+      computerScore += 1;
+      console.log(
+        `A máquina venceu! ${computerSelection[1]} vence ${humanSelection[1]}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
+      );
+    }
+  }
+  return;
 }
 
-playRound();
+playGame(5);
