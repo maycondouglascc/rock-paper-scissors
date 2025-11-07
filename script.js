@@ -8,14 +8,14 @@ function getComputerChoice(min, max) {
   let computerChoice = "";
 
   if (number == 1) {
-    computerChoice = "Pedra";
+    computerChoice = "pedra";
   } else if (number == 2) {
-    computerChoice = "Papel";
+    computerChoice = "papel";
   } else {
-    computerChoice = "Tesoura";
+    computerChoice = "tesoura";
   }
 
-  return computerChoice;
+  return [number, computerChoice];
 }
 
 function getHumanChoice() {
@@ -30,25 +30,25 @@ function getHumanChoice() {
     choiceToNumber = 3;
   }
 
-  return humanChoice;
+  return [choiceToNumber, humanChoice];
 }
 
-let humanScore,
-  computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 let humanSelection = getHumanChoice();
 let computerSelection = getComputerChoice(1, 3);
 
 function playRound(humanChoice, computerChoice) {
-  if (humanSelection > computerSelection) {
+  if (humanSelection[0] > computerSelection[0]) {
     humanScore += 1;
     console.log(
-      `Você venceu! ${humanChoice} vence ${computerChoice}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
+      `Você venceu! ${humanSelection[1]} vence ${computerSelection[1]}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
     );
   } else {
     computerScore += 1;
     console.log(
-      `A máquina venceu! ${computerChoice} vence ${humanChoice}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
+      `A máquina venceu! ${computerSelection[1]} vence ${humanSelection[1]}!! Placar: Você: ${humanScore} - ${computerScore} Máquina`
     );
   }
 }
